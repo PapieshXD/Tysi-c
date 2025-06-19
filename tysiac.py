@@ -38,16 +38,16 @@ class Player(Pile_of_cards):
 
     def __repr__(self):
         return f"Player({self.name}, Hand: {self.hand}, Points: {self.points}, Bid: {self.bid}, Fold: {self.fold})"
-        
-def meld(self):
-    melds = {"pik": 40, "trefl": 60, "karo": 80, "kier": 100}
-    for suit, meld_value in melds.items():
-        if any(card.value == "Król" and card.suit == suit for card in self.hand) and \
-           any(card.value == "Dama" and card.suit == suit for card in self.hand):
-            print(f"{self.name} melduje {meld_value} ({suit})")
-            self.points += meld_value
-            return suit
-    return None
+
+    def meld(self):
+        melds = {"pik": 40, "trefl": 60, "karo": 80, "kier": 100}
+        for suit, meld_value in melds.items():
+            if any(card.value == "Król" and card.suit == suit for card in self.hand) and \
+               any(card.value == "Dama" and card.suit == suit for card in self.hand):
+                print(f"{self.name} melduje {meld_value} ({suit})")
+                self.points += meld_value
+                return suit
+        return None
 
 def rozdawanie_kart(gracze_lista, ilosc_kart, czy_kupka, ilosc_kart_kupka):
     if not cards:
@@ -269,4 +269,5 @@ def gra_trzyosobowa():
     deklaracja_punktow(zwyciezca)
     rozgrywka(zwyciezca)
 
-main()
+if __name__ == "__main__":
+    main()
